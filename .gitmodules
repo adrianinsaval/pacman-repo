@@ -23,3 +23,7 @@
 [submodule "PKGBUILD/gmsh"]
 	path = PKGBUILD/gmsh
 	url = https://aur.archlinux.org/gmsh.git
+[submodule "freecad-linkdaily"]
+	path = PKGBUILD/freecad-linkdaily
+	url = https://github.com/adrianinsaval/freecad-git-AUR.git
+	branch = freecad-linkdaily
