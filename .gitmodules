@@ -1,0 +1,3 @@
+[submodule "PKGBUILD/freecad-git"]
+	path = PKGBUILD/freecad-git
+	url = https://aur.archlinux.org/freecad-git.git
