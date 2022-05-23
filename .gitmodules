@@ -8,3 +8,15 @@
 [submodule "PKGBUILD/xflr5"]
 	path = PKGBUILD/xflr5
 	url = https://aur.archlinux.org/xflr5.git
+[submodule "PKGBUILD/openfoam-com"]
+	path = PKGBUILD/openfoam-com
+	url = https://aur.archlinux.org/openfoam-com.git
+[submodule "PKGBUILD/kahip"]
+	path = PKGBUILD/kahip
+	url = https://aur.archlinux.org/kahip.git
+[submodule "PKGBUILD/parmetis"]
+	path = PKGBUILD/parmetis
+	url = https://aur.archlinux.org/parmetis.git
+[submodule "PKGBUILD/scotch"]
+	path = PKGBUILD/scotch
+	url = https://aur.archlinux.org/scotch.git
