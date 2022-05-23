@@ -5,3 +5,6 @@
 	path = PKGBUILD/freecad-git-opt
 	url = https://github.com/adrianinsaval/freecad-git-AUR.git
 	branch = freecad-git-opt
+[submodule "PKGBUILD/xflr5"]
+	path = PKGBUILD/xflr5
+	url = https://aur.archlinux.org/xflr5.git
