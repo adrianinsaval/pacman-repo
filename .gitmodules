@@ -20,3 +20,6 @@
 [submodule "PKGBUILD/scotch"]
 	path = PKGBUILD/scotch
 	url = https://aur.archlinux.org/scotch.git
+[submodule "PKGBUILD/gmsh"]
+	path = PKGBUILD/gmsh
+	url = https://aur.archlinux.org/gmsh.git
