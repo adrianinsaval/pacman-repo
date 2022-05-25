@@ -8,12 +8,20 @@ on:
     paths:
       - '.github/workflows/build-freecad.yml'
       - PKGBUILD/freecad*
+      - makepkg.conf
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: ghcr.io/adrianinsaval/pacman-repo:main
+    container: ghcr.io/adrianinsaval/archbuilder:main
+    env:
+        SRCDEST: /home/build/src
+        PKGDEST: /home/build/pkg
     steps:
       - uses: actions/checkout@v3
         with:
@@ -22,18 +30,36 @@ jobs:
       - name: Update packages
         run: pacman -Syu --noconfirm
 
-      - name: Run makepkg with "build" user
+      - name: Setup ccache
+        uses: actions/cache@v3
+        with:
+          path: /home/build/.cache/ccache
+          key: ccache
+
+      - name: Setup sources cache
+        uses: actions/cache@v3
+        with:
+          path: $SRCDEST
+          key: src-cache
+
+      - name: Run makepkg
         run: |
           chown -R build:users .
+          cp -p makepkg.conf /home/build/.makepkg.conf
           cd PKGBUILD/freecad-git
-          su --command='makepkg -s --noconfirm --nocheck' build
-          namcap -i *.pkg.*
+          su build --command='makepkg -s --noconfirm --nocheck'
+
+      - name: Run namcap
+        run: namcap -i $PKGDEST/*.pkg.*
+
+      - name: Print ccache ussage statistics
+        run: su build --command='ccache -s'
 
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: PKGBUILD/freecad-git/*.pkg.*
+          file: $PKGDEST/*.pkg.*
           file_glob: true
-          tag: ${{ github.ref }}
+          tag: archlinux
           overwrite: true
