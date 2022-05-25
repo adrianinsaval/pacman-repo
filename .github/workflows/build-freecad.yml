@@ -1,0 +1,39 @@
+name: build-freecad-pkgs
+
+on:
+  schedule:
+    - cron: '30 23 * * *'
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/build-freecad.yml'
+      - PKGBUILD/freecad*
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: ghcr.io/adrianinsaval/pacman-repo:main
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+
+      - name: Update packages
+        run: pacman -Syu --noconfirm
+
+      - name: Run makepkg with "build" user
+        run: |
+          chown -R build:users .
+          cd PKGBUILD/freecad-git
+          su --command='makepkg -s --noconfirm --nocheck' build
+          namcap -i *.pkg.*
+
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: PKGBUILD/freecad-git/*.pkg.*
+          file_glob: true
+          tag: ${{ github.ref }}
+          overwrite: true
