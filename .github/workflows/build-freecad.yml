@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  build-pkg-upload:
     runs-on: ubuntu-latest
     container: ghcr.io/adrianinsaval/archbuilder:main
     env:
@@ -47,7 +47,7 @@ jobs:
           chown -R build:users .
           cp -p makepkg.conf /home/build/.makepkg.conf
           cd PKGBUILD/freecad-git
-          su build --command='makepkg -s --noconfirm --nocheck'
+          su build --preserve-environment --command='makepkg -s --noconfirm --nocheck'
 
       - name: Run namcap
         run: namcap -i $PKGDEST/*.pkg.*
