@@ -39,15 +39,15 @@ jobs:
       - name: Setup sources cache
         uses: actions/cache@v3
         with:
-          path: $SRCDEST
+          path: ${{ env.SRCDEST }}
           key: src-cache
 
       - name: Run makepkg
         run: |
-          chown -R build:users .
+          chown -R build:wheel .
           cp -p makepkg.conf /home/build/.makepkg.conf
           cd PKGBUILD/freecad-git
-          su build --preserve-environment --command='makepkg -s --noconfirm --nocheck'
+          su build --command='makepkg -s --noconfirm --nocheck'
 
       - name: Run namcap
         run: namcap -i $PKGDEST/*.pkg.*
@@ -59,7 +59,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: $PKGDEST/*.pkg.*
+          file: ${{ env.PKGDEST }}/*.pkg.*
           file_glob: true
           tag: archlinux
           overwrite: true
