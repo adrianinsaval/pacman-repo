@@ -22,6 +22,7 @@ jobs:
     env:
         SRCDEST: /home/build/src
         PKGDEST: /home/build/pkg
+        releaseTag: archlinux-x86_64
     steps:
       - uses: actions/checkout@v3
         with:
@@ -55,11 +56,19 @@ jobs:
       - name: Print ccache ussage statistics
         run: su build --command='ccache -s'
 
+      - name: Download repo database and add packages
+        run: |
+          curl -o $PKGDEST/adrianinsaval.db.tar \
+          https://github.com/adrianinsaval/pacman-repo/releases/download/$releaseTag/adrianinsaval.db
+          curl -o $PKGDEST/adrianinsaval.files.tar \
+          https://github.com/adrianinsaval/pacman-repo/releases/download/$releaseTag/adrianinsaval.files
+          repo-add $PKGDEST/adrianinsaval.db.tar $PKGDEST/*.pkg.*
+
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{ env.PKGDEST }}/*.pkg.*
+          file: ${{ env.PKGDEST }}/*(*.db|*.files|*.pkg.*)
           file_glob: true
-          tag: archlinux
+          tag: ${{ env.releaseTag }}
           overwrite: true
