@@ -25,7 +25,6 @@ jobs:
   build-publish:
 
     runs-on: ubuntu-latest
-    environment: docker
     permissions:
       contents: read
       packages: write
@@ -107,4 +106,4 @@ jobs:
           account-type: personal
           keep-at-least: 6
           skip-tags: main
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.PAT_PKG_RM }}
