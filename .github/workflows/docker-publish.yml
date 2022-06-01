@@ -2,7 +2,7 @@ name: docker-publish
 
 on:
   schedule:
-    - cron: '0 23 * * 3'
+    - cron: '30 11 15 * *'
   push:
     branches: [ main ]
     paths:
@@ -105,6 +105,6 @@ jobs:
           image-names: archbuilder
           cut-off: two hours ago UTC
           account-type: personal
-          keep-at-least: 3
+          keep-at-least: 6
           skip-tags: main
           token: ${{ secrets.PAT }}
