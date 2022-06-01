@@ -2,13 +2,7 @@ name: build-freecad-pkgs
 
 on:
   schedule:
-    - cron: '30 23 * * *'
-  push:
-    branches: [ main ]
-    paths:
-      - '.github/workflows/build-freecad.yml'
-      - PKGBUILD/freecad*
-      - makepkg.conf
+    - cron: '30 12 * * *'
   workflow_dispatch:
 
 concurrency:
@@ -35,13 +29,15 @@ jobs:
         uses: actions/cache@v3
         with:
           path: /home/build/.cache/ccache
-          key: ccache
+          key: ccache-${{ github.sha }}
+          restore-keys: ccache-
 
       - name: Setup sources cache
         uses: actions/cache@v3
         with:
           path: ${{ env.SRCDEST }}
-          key: src-cache
+          key: src-cache-${{ github.sha }}
+          restore-keys: src-cache-
 
       - name: Run makepkg
         run: |
