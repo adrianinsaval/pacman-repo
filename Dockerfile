@@ -10,8 +10,9 @@ RUN pacman -S --noconfirm --needed boost-libs glew jsoncpp med netcdf \
         qt5-xmlpatterns qt5-base shared-mime-info xerces-c vtk
 # FreeCAD makedepends
 RUN pacman -S --noconfirm --needed boost cmake coin eigen git\
-        ninja python-shiboken2 shiboken2 swig gendesk \
-        fmt pugixml libspnave povray # checkdepends and some optional
+        ninja python-shiboken2 shiboken2 swig gendesk
+# FreeCAD checkdepends and optional
+RUN pacman -S --noconfirm --needed fmt pugixml libspnav povray
 
 # clear cache to reduce size
 RUN pacman -Scc --noconfirm
