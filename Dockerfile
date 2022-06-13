@@ -9,8 +9,9 @@ RUN pacman -S --noconfirm --needed boost-libs glew jsoncpp med netcdf \
         qt5-webkit qt5-webengine qt5-webchannel qt5-x11extras \
         qt5-xmlpatterns qt5-base shared-mime-info xerces-c vtk
 # FreeCAD makedepends
-RUN pacman -S --noconfirm --needed boost cmake coin eigen gcc-fortran \
-        git ninja python-shiboken2 shiboken2 swig gendesk
+RUN pacman -S --noconfirm --needed boost cmake coin eigen git\
+        ninja python-shiboken2 shiboken2 swig gendesk \
+        fmt pugixml libspnave povray # checkdepends and some optional
 
 # clear cache to reduce size
 RUN pacman -Scc --noconfirm
