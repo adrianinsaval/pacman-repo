@@ -29,14 +29,14 @@ jobs:
         uses: actions/cache@v3
         with:
           path: /home/build/.cache/ccache
-          key: ccache-${{ github.sha }}
+          key: ccache-${{ github.run_id }}
           restore-keys: ccache-
 
       - name: Setup sources cache
         uses: actions/cache@v3
         with:
           path: ${{ env.SRCDEST }}
-          key: src-cache-${{ github.sha }}
+          key: src-cache-${{ github.run_id }}
           restore-keys: src-cache-
 
       - name: Run makepkg
