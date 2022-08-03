@@ -17,7 +17,7 @@ jobs:
         SRCDEST: /home/build/src
         PKGDEST: /home/build/pkg
         releaseTag: archlinux-x86_64
-        CCACHE_SIZE: 2G
+        CCACHE_MAXSIZE: 2G
     steps:
       - uses: actions/checkout@v3
         with:
