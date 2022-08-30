@@ -1,7 +1,7 @@
 [submodule "PKGBUILD/freecad-git"]
 	path = PKGBUILD/freecad-git
 	url = https://aur.archlinux.org/freecad-git.git
-[submodule "freecad-git-opt"]
+[submodule "PKGBUILD/freecad-git-opt"]
 	path = PKGBUILD/freecad-git-opt
 	url = https://github.com/adrianinsaval/freecad-git-AUR.git
 	branch = freecad-git-opt
@@ -20,7 +20,7 @@
 [submodule "PKGBUILD/gmsh"]
 	path = PKGBUILD/gmsh
 	url = https://aur.archlinux.org/gmsh.git
-[submodule "freecad-linkdaily"]
+[submodule "PKGBUILD/freecad-linkdaily"]
 	path = PKGBUILD/freecad-linkdaily
 	url = https://github.com/adrianinsaval/freecad-git-AUR.git
 	branch = freecad-linkdaily
