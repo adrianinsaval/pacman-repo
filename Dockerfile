@@ -14,6 +14,28 @@ RUN pacman -S --noconfirm --needed boost cmake coin eigen git\
 # FreeCAD checkdepends and optional
 RUN pacman -S --noconfirm --needed fmt pugixml libspnav povray
 
+# xflr5
+RUN pacman -S --noconfirm --needed qt5-base
+
+# parmetis
+RUN pacman -S --noconfirm --needed openmpi metis
+
+# scotch
+RUN pacman -S --noconfirm --needed openmpi zlib bzip2
+
+# openfoam-com
+#RUN pacman -S --noconfirm --needed openmpi gcc cgal fftw boost \
+#        paraview utf8cpp scotch parmetis
+
+# gmsh depends
+#RUN pacman -S --noconfirm --needed fltk med-openmpi opencascade cairo \
+#        metis alglib glu cgns lapack ann
+
+# gmsh makedepends
+#RUN pacman -S --noconfirm --needed cmake desktop-file-utils sed swig \
+#        texlive-core voro++ fltk med opencascade cairo metis alglib \
+#        ann glu cgns lapack
+
 # clear cache to reduce size
 RUN pacman -Scc --noconfirm
 
