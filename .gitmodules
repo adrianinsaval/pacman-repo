@@ -1,6 +1,7 @@
 [submodule "PKGBUILD/freecad-git"]
 	path = PKGBUILD/freecad-git
 	url = https://aur.archlinux.org/freecad-git.git
+	branch = master
 [submodule "PKGBUILD/freecad-git-opt"]
 	path = PKGBUILD/freecad-git-opt
 	url = https://github.com/adrianinsaval/freecad-git-AUR.git
@@ -8,18 +9,23 @@
 [submodule "PKGBUILD/xflr5"]
 	path = PKGBUILD/xflr5
 	url = https://aur.archlinux.org/xflr5.git
+	branch = master
 [submodule "PKGBUILD/openfoam-com"]
 	path = PKGBUILD/openfoam-com
 	url = https://aur.archlinux.org/openfoam-com.git
+	branch = master
 [submodule "PKGBUILD/parmetis"]
 	path = PKGBUILD/parmetis
 	url = https://aur.archlinux.org/parmetis.git
+	branch = master
 [submodule "PKGBUILD/scotch"]
 	path = PKGBUILD/scotch
 	url = https://aur.archlinux.org/scotch.git
+	branch = master
 [submodule "PKGBUILD/gmsh"]
 	path = PKGBUILD/gmsh
 	url = https://aur.archlinux.org/gmsh.git
+	branch = master
 [submodule "PKGBUILD/freecad-linkdaily"]
 	path = PKGBUILD/freecad-linkdaily
 	url = https://github.com/adrianinsaval/freecad-git-AUR.git
