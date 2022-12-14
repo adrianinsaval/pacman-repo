@@ -12,7 +12,7 @@ RUN pacman -S --noconfirm --needed boost-libs glew jsoncpp med-openmpi \
 RUN pacman -S --noconfirm --needed boost cmake coin eigen git\
         ninja python-shiboken2 shiboken2 swig gendesk
 # FreeCAD checkdepends and optional
-RUN pacman -S --noconfirm --needed pugixml libspnav povray calculix-cxx
+RUN pacman -S --noconfirm --needed pugixml libspnav povray
 
 # xflr5
 # RUN pacman -S --noconfirm --needed qt5-base
