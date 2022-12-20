@@ -61,11 +61,20 @@ jobs:
           https://github.com/adrianinsaval/pacman-repo/releases/download/$releaseTag/adrianinsaval.files
           repo-add $PKGDEST/adrianinsaval.db.tar $PKGDEST/*.pkg.*
 
-      - name: Upload binaries to release
+      - name: Upload packages to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{ env.PKGDEST }}/*(*.db|*.files|*.pkg.*)
+          file: ${{ env.PKGDEST }}/*.pkg.*
+          file_glob: true
+          tag: ${{ env.releaseTag }}
+          overwrite: true
+
+      - name: Upload repo database to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ${{ env.PKGDEST }}/*(*.db|*.files)
           file_glob: true
           tag: ${{ env.releaseTag }}
           overwrite: true
