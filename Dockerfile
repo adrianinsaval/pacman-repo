@@ -3,11 +3,11 @@ FROM archlinux/archlinux:base-devel
 RUN pacman -Syu --noconfirm --needed base-devel ccache namcap
 
 # FreeCAD depends
-RUN pacman -S --noconfirm --needed boost-libs glew jsoncpp med-openmpi \
+RUN pacman -S --noconfirm --needed boost-libs fmt glew jsoncpp med-openmpi \
         netcdf opencascade openmpi pyside2 pyside2-tools python-yaml \
         python-matplotlib python-pivy python-ply python-packaging \
         qt5-svg qt5-tools qt5-webengine qt5-webchannel qt5-x11extras \
-        qt5-xmlpatterns qt5-base shared-mime-info xerces-c vtk fmt verdict
+        qt5-xmlpatterns qt5-base shared-mime-info xerces-c vtk adios2 verdict
 # FreeCAD makedepends
 RUN pacman -S --noconfirm --needed boost cmake coin eigen git\
         ninja python-shiboken2 shiboken2 swig gendesk
