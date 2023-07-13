@@ -24,7 +24,9 @@ jobs:
           submodules: 'recursive'
 
       - name: Update packages
-        run: pacman -Syu --noconfirm
+        run: |
+          pacman -Sy archlinux-keyring --noconfirm --needed
+          pacman -Syu --noconfirm
 
       - name: Setup ccache
         uses: actions/cache@v3
