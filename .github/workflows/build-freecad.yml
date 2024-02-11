@@ -17,7 +17,7 @@ jobs:
         SRCDEST: /home/build/src
         PKGDEST: /home/build/pkg
         releaseTag: archlinux-x86_64
-        CCACHE_MAXSIZE: 2G
+        CCACHE_MAXSIZE: 0.75G
     steps:
       - uses: actions/checkout@v3
         with:
@@ -34,13 +34,6 @@ jobs:
           path: /home/build/.cache/ccache
           key: ccache-${{ github.run_id }}
           restore-keys: ccache-
-
-      - name: Setup sources cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ env.SRCDEST }}
-          key: src-cache-${{ github.run_id }}
-          restore-keys: src-cache-
 
       - name: Run makepkg
         run: |
