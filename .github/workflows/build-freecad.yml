@@ -29,8 +29,9 @@ jobs:
           pacman -Syu --noconfirm
 
       - name: Setup ccache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
+          save-always: true
           path: /home/build/.cache/ccache
           key: ccache-${{ github.run_id }}
           restore-keys: ccache-
