@@ -4,18 +4,17 @@ RUN pacman -Syu --noconfirm --needed base-devel ccache namcap \
         ; pacman -Scc --noconfirm
 
 # FreeCAD depends
-RUN pacman -S --noconfirm --needed boost-libs fmt glew jsoncpp med-openmpi \
-        netcdf opencascade openmpi pyside2 pyside2-tools python-yaml \
-        python-matplotlib python-pivy python-ply python-packaging \
-        qt5-svg qt5-tools qt5-webengine qt5-webchannel qt5-x11extras \
-        qt5-xmlpatterns qt5-base shared-mime-info xerces-c vtk adios2 verdict fast_float \
+RUN pacman -S --noconfirm --needed boost-libs coin fmt glew jsoncpp \
+        med-openmpi netcdf opencascade openmpi pyside6 pyside6-tools python-yaml \
+        python-matplotlib python-pivy python-ply python-packaging qt6-svg \
+        qt6-tools qt6-base shared-mime-info verdict vtk xerces-c yaml-cpp \
         ; pacman -Scc --noconfirm
 # FreeCAD makedepends
-RUN pacman -S --noconfirm --needed boost cmake coin eigen git\
-        ninja python-shiboken2 shiboken2 swig gendesk \
+RUN pacman -S --noconfirm --needed boost cmake eigen git ninja nlohmann-json \
+        shiboken6 swig gendesk fast_float \
         ; pacman -Scc --noconfirm
 # FreeCAD checkdepends and optional
-RUN pacman -S --noconfirm --needed pugixml libspnav povray \
+RUN pacman -S --noconfirm --needed pugixml libspnav \
         ; pacman -Scc --noconfirm
 
 # xflr5
