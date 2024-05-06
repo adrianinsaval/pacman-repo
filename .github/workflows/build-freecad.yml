@@ -2,7 +2,7 @@ name: build-freecad-pkgs
 
 on:
   schedule:
-    - cron: '30 12 * * *'
+    - cron: '30 17 * * *'
   workflow_dispatch:
 
 concurrency:
