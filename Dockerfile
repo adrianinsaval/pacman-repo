@@ -5,7 +5,7 @@ RUN pacman -Syu --noconfirm --needed base-devel ccache namcap \
 
 # FreeCAD depends
 RUN pacman -S --noconfirm --needed boost-libs coin fmt glew jsoncpp \
-        med-openmpi netcdf opencascade openmpi pyside6 pyside6-tools python-yaml \
+        med-openmpi netcdf opencascade openmpi pybind11 pyside6 pyside6-tools python-yaml \
         python-matplotlib python-pivy python-ply python-packaging qt6-svg \
         qt6-tools qt6-base qt6-5compat shared-mime-info verdict vtk xerces-c yaml-cpp \
         ; pacman -Scc --noconfirm
